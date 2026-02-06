@@ -73,6 +73,7 @@
   </head>
   <body>
     <main class="frame">
+      <p class="whisper" style="font-family: 'Courier New', monospace; font-size: 0.95rem; margin-bottom: 1.5rem; opacity: 0.6; letter-spacing: 0.1em;">Human race will answer to the Epstein files</p>
       <h1 class="timer" aria-live="polite">
         <span id="days">30</span>
         <span class="label">days</span>
@@ -84,6 +85,16 @@
         <span class="label">seconds</span>
       </h1>
       <p class="sigil">The Answer</p>
+      <div id="reveal" style="display: none; margin-top: 3rem; text-align: left; font-family: monospace; font-size: 0.85rem; line-height: 1.8; opacity: 0.8;">
+        <p style="margin-bottom: 1rem;">🧂 IV / Nonce (Base64)</p>
+        <pre style="background: rgba(255,255,255,0.05); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto;">R9e3Qp7sT2MZkFhA</pre>
+        
+        <p style="margin-bottom: 1rem;">📦 Ciphertext (Base64)</p>
+        <pre style="background: rgba(255,255,255,0.05); padding: 1rem; margin-bottom: 1.5rem; overflow-x: auto;">9lX4mZp7xYV9ZKk1mM8zvY4y9qzZQ9m+eX5B2sT1pY7M0C0G7H4zv1k2X2cP5Rk0nJYF1ZpZ6B8V8m4H1mZy8z0P0c0mNQX0z6n7p2k8J7J5zB9M5yP3Y8M1m0H7Y5C6p3R9Z1z0Y4m2C9B1k3H2M6z8F5</pre>
+        
+        <p style="margin-bottom: 1rem;">🏷️ Auth Tag (Base64)</p>
+        <pre style="background: rgba(255,255,255,0.05); padding: 1rem; overflow-x: auto;">V6B3Y9kQm2FZcJ8pZQe4jA==</pre>
+      </div>
     </main>
     <script>
       const daysEl = document.getElementById("days");
@@ -116,6 +127,11 @@
         hoursEl.textContent = pad(hours);
         minutesEl.textContent = pad(minutes);
         secondsEl.textContent = pad(seconds);
+        
+        // Show encrypted message when countdown reaches zero
+        if (remaining === 0) {
+          document.getElementById("reveal").style.display = "block";
+        }
       };
       updateCountdown();
       setInterval(updateCountdown, 1000);
